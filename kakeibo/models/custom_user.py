@@ -17,5 +17,3 @@ class CustomUser(AbstractUser):
     def create(username, email, password, birthday):
         user = CustomUser.objects.create_user(username, email, password, birthday=birthday)
         return user
-
-

@@ -23,10 +23,16 @@ from rest_framework_simplejwt.views import (
 )
 
 from kakeibo.views.register_view import RegisterView
+from kakeibo.views.expense_category_view import ExpenseCategoryView
+
+router = routers.SimpleRouter(trailing_slash=False)
+router.register(r'expense-categories', ExpenseCategoryView, 'expense-category')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/register/', RegisterView.as_view(), name='register'),
+
+    path('api/', include(router.urls)),
 ]
