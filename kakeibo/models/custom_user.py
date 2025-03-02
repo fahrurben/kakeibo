@@ -12,3 +12,10 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    @staticmethod
+    def create(username, email, password, birthday):
+        user = CustomUser.objects.create_user(username, email, password, birthday=birthday)
+        return user
+
+
