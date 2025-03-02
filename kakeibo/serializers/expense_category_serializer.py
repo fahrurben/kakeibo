@@ -12,7 +12,8 @@ class ExpenseCategorySerializer(serializers.ModelSerializer):
     def validate_name(self, value):
         current_user = self.context['user']
         if self.instance:
-            is_exist = ExpenseCategory.objects.filter(user=current_user, name=value).exclude(id=self.instance.id).exists()
+            is_exist = (ExpenseCategory.objects.filter(user=current_user, name=value)
+                        .exclude(id=self.instance.id).exists())
         else:
             is_exist = ExpenseCategory.objects.filter(user=current_user, name=value).exists()
 

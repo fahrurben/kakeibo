@@ -1,12 +1,12 @@
 from rest_framework import viewsets
 
-from ..models.expense_category import ExpenseCategory
-from ..serializers.expense_category_serializer import ExpenseCategorySerializer
+from ..models.income import Income
+from ..serializers.income_serializer import IncomeSerializer
 from ..permissions.user_owned_permission import UserOwnedPermission
 
 
-class ExpenseCategoryView(viewsets.ModelViewSet):
-    serializer_class = ExpenseCategorySerializer
+class IncomeView(viewsets.ModelViewSet):
+    serializer_class = IncomeSerializer
     permission_classes = [UserOwnedPermission]
 
     def get_serializer_context(self):
@@ -16,4 +16,4 @@ class ExpenseCategoryView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        return ExpenseCategory.objects.filter(user=user)
+        return Income.objects.filter(user=user)
