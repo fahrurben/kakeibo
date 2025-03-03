@@ -8,6 +8,8 @@ from ..permissions.user_owned_permission import UserOwnedPermission
 class ExpenseCategoryView(viewsets.ModelViewSet):
     serializer_class = ExpenseCategorySerializer
     permission_classes = [UserOwnedPermission]
+    ordering_fields = ['name']
+    ordering = ['name']
 
     def get_serializer_context(self):
         context = super().get_serializer_context()

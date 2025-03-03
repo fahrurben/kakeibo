@@ -25,10 +25,12 @@ from rest_framework_simplejwt.views import (
 from kakeibo.views.register_view import RegisterView
 from kakeibo.views.expense_category_view import ExpenseCategoryView
 from kakeibo.views.income_view import IncomeView
+from kakeibo.views.expense_view import ExpenseView
 
 router = routers.SimpleRouter(trailing_slash=False)
 router.register(r'expense-categories', ExpenseCategoryView, 'expense-category')
 router.register(r'incomes', IncomeView, 'income')
+router.register(r'expenses', ExpenseView, 'expense')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
