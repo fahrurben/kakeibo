@@ -2,13 +2,15 @@ from rest_framework import serializers
 from ..models.expense import Expense
 from .expense_category_serializer import ExpenseCategorySerializer
 
+
 class ExpenseSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField()
     category = ExpenseCategorySerializer(read_only=True)
 
     class Meta:
         model = Expense
-        fields = ('id', 'category_id', 'category', 'date', 'description', 'amount', 'details', 'created_at', 'updated_at', )
+        fields = ('id', 'category_id', 'category', 'date', 'description',
+                  'amount', 'details', 'created_at', 'updated_at', )
 
     def create(self, validated_data):
         current_user = self.context['user']
