@@ -26,6 +26,7 @@ from kakeibo.views.register_view import RegisterView
 from kakeibo.views.expense_category_view import ExpenseCategoryView
 from kakeibo.views.income_view import IncomeView
 from kakeibo.views.expense_view import ExpenseView
+from kakeibo.views.user_view import UserView
 
 router = routers.SimpleRouter(trailing_slash=False)
 router.register(r'expense-categories', ExpenseCategoryView, 'expense-category')
@@ -37,6 +38,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/register/', RegisterView.as_view(), name='register'),
+    path('api/user/', UserView.as_view(), name='user'),
 
     path('api/', include(router.urls)),
 ]

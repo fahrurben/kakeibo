@@ -4,10 +4,14 @@ from ..models.expense_category import ExpenseCategory
 
 class ExpenseCategorySerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
+    type_label = serializers.SerializerMethodField()
 
     class Meta:
         model = ExpenseCategory
-        fields = ('id', 'type', 'name', 'description', 'is_active', 'created_at', 'updated_at', )
+        fields = ('id', 'type', 'type_label', 'name', 'description', 'is_active', 'created_at', 'updated_at', )
+
+    def get_type_label(self, obj):
+        return obj.get_type_display()
 
     def validate_name(self, value):
         current_user = self.context['user']

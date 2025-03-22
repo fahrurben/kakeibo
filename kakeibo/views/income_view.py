@@ -18,4 +18,12 @@ class IncomeView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        return Income.objects.filter(user=user)
+        month = self.request.query_params.get('month')
+        year = self.request.query_params.get('year')
+
+        query = Income.objects.filter(user=user)
+        if month is not None and year is not None:
+            query = query.filter(date__year__gte=year, date__month__gte=month,
+                                 date__year__lte=year, date__month__lte=month)
+
+        return query
