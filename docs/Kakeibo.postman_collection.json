@@ -1,0 +1,633 @@
+{
+	"info": {
+		"_postman_id": "846e6993-e5cf-4367-8179-24a4003075c5",
+		"name": "Kakeibo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5173342"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test2@test.com\",\r\n    \"password\": \"secret123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/token/",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test2@test.com\",\r\n    \"username\": \"user2\",\r\n    \"password\": \"secret123\",\r\n    \"birthday\": \"1990-01-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/register/",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Category Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"ES\",\r\n    \"name\": \"Category 1\",\r\n    \"description\": \"Lorem ipsum\",\r\n    \"is_active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/expense-categories",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expense-categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Category Get",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/expense-categories/1",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expense-categories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Category Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"ES\",\r\n    \"name\": \"Category 1 Updated\",\r\n    \"description\": \"Lorem ipsum\",\r\n    \"is_active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/expense-categories/2",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expense-categories",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Category Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/expense-categories/1",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expense-categories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Category LIst",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/expense-categories",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expense-categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Income Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2025-01-01\",\r\n    \"description\": \"Lorem ipsum\",\r\n    \"amount\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/incomes",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"incomes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Income Get",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/incomes/1",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"incomes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Income Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2025-01-01\",\r\n    \"description\": \"Lorem ipsum\",\r\n    \"amount\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/incomes/1",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"incomes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Income Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/incomes/1",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"incomes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Income List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/incomes",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"incomes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_id\": 2,\r\n    \"date\": \"2025-01-01\",\r\n    \"description\": \"Expense 1 January\",\r\n    \"amount\": 1000,\r\n    \"details\": \"lorem ipsum\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/expenses",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Get",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/expenses/2",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expenses",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_id\": 2,\r\n    \"date\": \"2025-01-02\",\r\n    \"description\": \"Expense 2 January\",\r\n    \"amount\": 1000,\r\n    \"details\": \"lorem ipsum\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{APIURL}}/expenses/1",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expenses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/expenses/1",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expenses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/expenses?month=01&year=2025&ordering=category",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expenses"
+					],
+					"query": [
+						{
+							"key": "month",
+							"value": "01"
+						},
+						{
+							"key": "year",
+							"value": "2025"
+						},
+						{
+							"key": "ordering",
+							"value": "category"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/user/",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Income Total",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/incomes/monthly_total",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"incomes",
+						"monthly_total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense Total",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{APIURL}}/expenses/monthly_total",
+					"host": [
+						"{{APIURL}}"
+					],
+					"path": [
+						"expenses",
+						"monthly_total"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
